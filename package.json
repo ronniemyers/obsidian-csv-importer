@@ -1,6 +1,6 @@
 {
   "name": "obsidian-csv-importer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Obsidian plugin to import CSV files into notes",
   "type": "module",
   "main": "main.js",
