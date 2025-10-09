@@ -21,9 +21,11 @@ export default class CSVImporterPlugin extends Plugin {
     ribbonIconEl.addClass('csv-importer-ribbon');
 
     this.addCommand({
-      id: 'open',
+      id: 'import-csv',
       name: 'Import CSV to notes',
-      callback: () => new ImportModal(this.app, this).open()
+      callback: () => {
+        new ImportModal(this.app, this).open();
+      }
     });
 
     this.addSettingTab(new CSVImporterSettingTab(this.app, this));
