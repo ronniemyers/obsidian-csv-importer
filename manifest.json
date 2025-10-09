@@ -1,5 +1,5 @@
 {
-	"id": "obsidian-csv-importer",
+	"id": "csv-importer",
 	"name": "CSV Importer",
 	"version": "1.0.0",
 	"minAppVersion": "1.4.0",
