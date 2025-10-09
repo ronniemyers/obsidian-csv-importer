@@ -1,9 +1,9 @@
 {
 	"id": "csv-importer",
 	"name": "CSV Importer",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"minAppVersion": "1.4.0",
-	"description": "Import CSV files to create Obsidian notes",
+	"description": "Import CSV files to create notes",
 	"author": "Ronnie Myers",
 	"authorUrl": "https://github.com/ronniemyers/obsidian-csv-importer",
 	"isDesktopOnly": true,
