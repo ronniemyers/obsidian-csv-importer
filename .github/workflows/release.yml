@@ -1,4 +1,4 @@
-name: Release CSV Importer plugin
+name: Release CSV Importer
 
 on:
   push:
