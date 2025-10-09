@@ -5,10 +5,6 @@
 	"minAppVersion": "1.4.0",
 	"description": "Import CSV files to create notes",
 	"author": "Ronnie Myers",
-	"authorUrl": "https://github.com/ronniemyers/obsidian-csv-importer",
-	"isDesktopOnly": true,
-	"main": "main.js",
-	"css": [
-		"styles.css"
-	]
+	"fundingUrl": "https://buymeacoffee.com/ronniemyers",
+	"isDesktopOnly": true
 }
