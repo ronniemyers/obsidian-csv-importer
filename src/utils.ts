@@ -35,7 +35,7 @@ export function generateNoteContent(row: Record<string, string>, arrayDelimiter:
 }
 
 function createFrontmatter(row: Record<string, string>, arrayDelimiter: string): string {
-  const properties: Record<string, string | number | string[]> = {};
+  const properties: Record<string, string | string[]> = {};
   for (const [key, raw] of Object.entries(row)) {
     const value = (raw ?? '').toString();
     if (!value.trim()) continue;
@@ -50,6 +50,8 @@ function createFrontmatter(row: Record<string, string>, arrayDelimiter: string):
     } else if (typeof v === 'string' && v.includes('\n')) {
       yaml.push(`${k}: |`);
       v.split('\n').forEach(line => yaml.push(`  ${line}`));
+    } else if (typeof v === 'string' && /^0\d+$/.test(v)) {
+      yaml.push(`${k}: "${v}"`);
     } else {
       yaml.push(`${k}: ${escapeYamlValue(v)}`);
     }
@@ -58,17 +60,14 @@ function createFrontmatter(row: Record<string, string>, arrayDelimiter: string):
   return yaml.join('\n');
 }
 
-function parseValue(value: string, arrayDelimiter: string): string | number | string[] {
+function parseValue(value: string, arrayDelimiter: string): string | string[] {
   if (arrayDelimiter && value.includes(arrayDelimiter) && !value.includes('http')) {
     return value.split(arrayDelimiter).map(v => v.trim()).filter(Boolean);
   }
-  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
-  const num = parseFloat(value);
-  if (!isNaN(num) && isFinite(num)) return num;
   return value;
 }
 
-function escapeYamlValue(value: string | number | string[]): string {
+function escapeYamlValue(value: string | string[]): string {
   if (typeof value === 'string') {
     if (value.includes('"') || value.includes("'") || value.includes('\n') || value.includes(':')) {
       return `"${value.replace(/"/g, '\\"')}"`;

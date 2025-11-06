@@ -18,7 +18,35 @@
   padding: 8px;
 }
 
+.csv-importer-buttons {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+}
+
 .csv-importer-submit {
+  flex: 1;
+}
+
+.csv-importer-preview {
+  flex: 1;
+}
+
+.csv-importer-preview-content {
+  background: var(--background-secondary);
+  padding: 16px;
+  border-radius: 4px;
+  max-height: 400px;
+  overflow: auto;
+  font-family: var(--font-monospace);
+  font-size: 0.9em;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 16px 0;
+}
+
+.csv-importer-preview-close {
+  width: 100%;
   margin-top: 16px;
 }
 

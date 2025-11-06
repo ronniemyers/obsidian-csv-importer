@@ -4,6 +4,14 @@ Import a CSV file to create Obsidian notes. Each CSV column becomes a YAML prope
 
 ![Demo](media/plugin-ui.png)
 
+## Features
+
+- **YAML frontmatter**: All CSV columns become YAML properties
+- **Array delimiter**: Split values into arrays using comma, semicolon, or pipe delimiters
+- **Custom templates**: Use Handlebars syntax to format note bodies
+- **Preview**: See the first note before importing
+- **Year suffix**: Automatically adds year to titles when available
+
 ## CSV Ideas
 
 - Films / TV shows
@@ -28,6 +36,8 @@ and much more!
 
 ## Usage
 
-- Run the command: “CSV Importer: Import CSV to notes”.
-- Choose the CSV file, enter the title column (e.g., `title`), and set the output folder.
-- The plugin will generate one note per row.
+- Run the command: "CSV Importer: Import CSV to notes".
+- Select your CSV file and specify the title column (`title`).
+- **Array delimiter**: Change from comma to semicolon/pipe if your data contains addresses or descriptions with commas.
+- **Body template** (optional): Use Handlebars syntax to customize note content with `{{field_name}}` placeholders.
+- Click **Preview** to see the first note before importing, or **Import** to create all notes.
