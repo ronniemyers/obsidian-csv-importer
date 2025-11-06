@@ -5,7 +5,7 @@ const production = process.argv[2] === 'production';
 const manifest = JSON.parse(readFileSync('manifest.json', 'utf8'));
 
 esbuild.build({
-  entryPoints: ['main.ts'],
+  entryPoints: ['src/main.ts'],
   bundle: true,
   outfile: 'main.js',
   external: [

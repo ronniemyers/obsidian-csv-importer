@@ -1,37 +1,37 @@
-import js from '@eslint/js';
-import tseslint from '@typescript-eslint/eslint-plugin';
-import tsparser from '@typescript-eslint/parser';
-import globals from 'globals';
+import obsidianmd from "eslint-plugin-obsidianmd";
+import prettierConfig from "eslint-config-prettier";
 
-export default [
-  js.configs.recommended,
-  {
-    files: ['**/*.ts'],
-    languageOptions: {
-      parser: tsparser,
-      parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-      },
-      globals: {
-        ...globals.node,
-        HTMLInputElement: 'readonly',
-        File: 'readonly', 
-        DragEvent: 'readonly',
-        document: 'readonly',
-        window: 'readonly',
-      },
-    },
-    plugins: {
-      '@typescript-eslint': tseslint,
-    },
-    rules: {
-      ...tseslint.configs.recommended.rules,
-      'no-var': 'error',
-      '@typescript-eslint/no-explicit-any': 'off',
-    },
-  },
-  {
-    ignores: ['node_modules/', 'main.js'],
-  },
-];
+import globals from "globals";
+import { defineConfig, globalIgnores } from "eslint/config";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
+
+export default defineConfig([
+
+	globalIgnores([
+		"node_modules/",
+		"main.js",
+		"*.mjs"
+	]),
+	
+	{
+		files: [ "**/*.ts" ],
+		languageOptions: {
+			globals: {
+				...globals.node,
+			},
+			parser: tsParser,
+			parserOptions: {
+				project: "./tsconfig.json",
+				sourceType: "module"
+			},
+		},
+		plugins: { 
+			obsidianmd,
+			"@typescript-eslint": tsPlugin
+		},
+	},
+	...obsidianmd.configs.recommended,
+	prettierConfig
+
+]);
