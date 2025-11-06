@@ -13,6 +13,6 @@
     "resolveJsonModule": true,
     "types": ["node", "obsidian"]
   },
-  "include": ["**/*.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
 }
