@@ -54,7 +54,6 @@ Type:
 
 Movie runtime:
 {{wikilink runtime_mins}}
-minutes
 ```
 
 ## Use Cases
