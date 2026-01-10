@@ -33,13 +33,6 @@ Transform your CSV into connected notes:
 
 ### Templates
 
-```markdown
-# {{title}}
-
-Director: {{wikilink director}}
-Genres: {{wikilinks genre}}
-```
-
 **Wikilink helpers**:
 
 - `{{wikilink field}}` — single value → `[[value]]`
@@ -49,6 +42,13 @@ Genres: {{wikilinks genre}}
 
 - Spaces become underscores: `Runtime (mins)` → `{{runtime_mins}}`
 - Special chars removed: `Author-Name` → `{{AuthorName}}`
+
+```markdown
+# {{title}}
+
+Director: {{wikilink director}}
+Genres: {{wikilinks genre}}
+```
 
 ## Use Cases
 
