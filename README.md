@@ -33,28 +33,22 @@ Transform your CSV into connected notes:
 
 ### Templates
 
+```markdown
+# {{title}}
+
+Director: {{wikilink director}}
+Genres: {{wikilinks genre}}
+```
+
 **Wikilink helpers**:
 
-- `{{wikilink field}}` - single values → `{{wikilink author}}` becomes `[[F. Scott Fitzgerald]]`
-- `{{wikilinks field}}` - multi-values → `{{wikilinks genre}}` becomes `[[fiction]], [[classic]]`
+- `{{wikilink field}}` — single value → `[[value]]`
+- `{{wikilinks field}}` — multi-value → `[[item1]], [[item2]]`
 
-**Field names**: CSV column names are normalized for templates:
+**Field normalization**:
 
-- Spaces → underscores: `"Runtime (mins)"` → `{{runtime_mins}}`
-- Special characters removed: `"Author-Name"` → `{{AuthorName}}`
-- **Example**:
-
-CSV columns: `Type`, `Runtime (mins)`
-
-Template:
-
-```handlebars
-Type:
-{{wikilink type}}
-
-Movie runtime:
-{{wikilink runtime_mins}}
-```
+- Spaces become underscores: `Runtime (mins)` → `{{runtime_mins}}`
+- Special chars removed: `Author-Name` → `{{AuthorName}}`
 
 ## Use Cases
 
