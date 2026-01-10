@@ -1,7 +1,7 @@
 {
 	"id": "csv-importer",
 	"name": "CSV Importer",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"minAppVersion": "1.4.0",
 	"description": "Import CSV files to create notes",
 	"author": "Ronnie Myers",

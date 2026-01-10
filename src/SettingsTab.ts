@@ -1,5 +1,6 @@
 import { App, PluginSettingTab, Setting } from 'obsidian';
 import type CSVImporterPlugin from './main';
+import { FolderSuggest } from './utils';
 
 export class CSVImporterSettingTab extends PluginSettingTab {
   plugin: CSVImporterPlugin;
@@ -15,10 +16,15 @@ export class CSVImporterSettingTab extends PluginSettingTab {
     
     new Setting(containerEl)
       .setName('Default output folder')
-      .addText(t => t
-        .setPlaceholder('CSV imports')
-        .setValue(this.plugin.settings.outputFolder)
-        .onChange(async (v) => { this.plugin.settings.outputFolder = v; await this.plugin.saveSettings(); }));
+      .addText((t) => {
+        t.setPlaceholder('CSV imports')
+          .setValue(this.plugin.settings.outputFolder)
+          .onChange(async (v) => {
+            this.plugin.settings.outputFolder = v;
+            await this.plugin.saveSettings();
+          });
+        new FolderSuggest(this.app, t.inputEl);
+      });
     
     new Setting(containerEl)
       .setName('Custom template')

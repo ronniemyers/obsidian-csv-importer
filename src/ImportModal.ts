@@ -2,7 +2,12 @@ import { App, Modal, Notice } from 'obsidian';
 import Papa from 'papaparse';
 import Handlebars from 'handlebars';
 import type CSVImporterPlugin from './main';
-import { sanitizeFilename, getYearSuffix, generateNoteContent } from './utils';
+import {
+  sanitizeFilename,
+  getYearSuffix,
+  generateNoteContent,
+  FolderSuggest,
+} from './utils';
 
 class PreviewModal extends Modal {
   private filename: string;
@@ -106,6 +111,7 @@ export class ImportModal extends Modal {
     this.folderInput = folderWrap.createEl('input', { type: 'text' });
     this.folderInput.addClass('csv-importer-input');
     this.folderInput.value = this.plugin.settings.outputFolder;
+    new FolderSuggest(this.app, this.folderInput);
 
     // Template
     const templateWrap = contentEl.createDiv({ cls: 'csv-importer-field csv-importer-field-stacked' });

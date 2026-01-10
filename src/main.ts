@@ -19,7 +19,7 @@ export default class CSVImporterPlugin extends Plugin {
       name: 'Import CSV to notes',
       callback: () => {
         new ImportModal(this.app, this).open();
-      }
+      },
     });
 
     this.addSettingTab(new CSVImporterSettingTab(this.app, this));
@@ -27,17 +27,16 @@ export default class CSVImporterPlugin extends Plugin {
 
   async ensureFolder(folderPath: string): Promise<void> {
     const normalized = normalizePath(folderPath);
-    const parts = normalized.split('/').filter(Boolean);
-    let current = '';
-    for (const part of parts) {
-      current = current ? `${current}/${part}` : part;
-      if (!this.app.vault.getAbstractFileByPath(current)) {
-        await this.app.vault.createFolder(current);
-      }
+    if (!this.app.vault.getAbstractFileByPath(normalized)) {
+      await this.app.vault.createFolder(normalized);
     }
   }
 
-  async createNote(filename: string, content: string, folder: string): Promise<void> {
+  async createNote(
+    filename: string,
+    content: string,
+    folder: string
+  ): Promise<void> {
     await this.ensureFolder(folder);
     const fullPath = normalizePath(`${folder}/${filename}`);
     const existing = this.app.vault.getAbstractFileByPath(fullPath);
@@ -53,7 +52,7 @@ export default class CSVImporterPlugin extends Plugin {
   }
 
   async loadSettings() {
-    const data = await this.loadData() as CSVImporterSettings | null;
+    const data = (await this.loadData()) as CSVImporterSettings | null;
     this.settings = Object.assign({}, DEFAULT_SETTINGS, data);
   }
 }
